@@ -12,6 +12,12 @@ parser.add_argument(
     help='log level'
 )
 
+parser.add_argument(
+    '--logfile',
+    default = '',    
+    help='log file name'
+)
+
 subparsers = parser.add_subparsers(help='command to run', metavar='{command}')
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -32,6 +38,15 @@ for command_name in get_commands():
 
 args = parser.parse_args()
 logging.basicConfig(level=getattr(logging, args.log.upper()))
+
+#include logging to file if arg specified
+if args.logfile != "":
+    logger = logging.getLogger()
+    fh = logging.FileHandler(args.logfile)
+    fh.setLevel(logger.level)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
 
 # Workaround required missing until 3.7 - https://docs.python.org/dev/library/argparse.html#sub-commands - how do I force virtual env to upgrade to 3.7?
 if not hasattr(args, 'func'):
