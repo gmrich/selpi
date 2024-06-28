@@ -9,13 +9,6 @@ def add_parser(subparsers):
     parser.set_defaults(func=run)
 
 def run(args):
-    logger = logging.getLogger()
-    fh = logging.FileHandler('http-ha.log')
-    fh.setLevel(logger.level)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    fh.setFormatter(formatter)
-    logger.addHandler(fh)
-
     server_address = ('', 8001) # start port diff to other http so can run at same time
     logging.info("Starting server on port 8001")
     httpd = HTTPServer(server_address, HTTPRequestHandler)
@@ -167,13 +160,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             state.AllowSpProAccess = False
         elif cmd == constants.CMD_HTTP_START:
             state.AllowSpProAccess = True
-        
-        # match cmd:
-        #     case constants.CMD_HTTP_STOP:
-        #         state.AllowSpProAccess = False
-        #     case constants.CMD_HTTP_START:
-        #         state.AllowSpProAccess = True
-        
+
         return self.getState()
 
     def noSpProAccessResult(self):
