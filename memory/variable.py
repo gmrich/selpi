@@ -318,6 +318,267 @@ MAP = {
         ADDRESS: 0x1f0010,
         TYPE: "ushort"
     },
+    "GeneratorStatus": {
+        ADDRESS: 41110,
+        TYPE: "ushort",
+        UNITS: ""  
+    },
+    "ChargeMode": {
+        ADDRESS: 41755,
+        TYPE: "ushort",
+        UNITS: ""  
+    },
+    "AcSourceStatus": {
+        ADDRESS: 41088,
+        TYPE: "ushort",
+        UNITS: ""  
+    },
+    "GeneratorStartReason": {
+        ADDRESS: 41086,
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "GeneratorRunningReason": {
+        ADDRESS: 41087,
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "AcOutStatus": {
+        ADDRESS: 41085,
+        TYPE: "ushort",
+        UNITS: ""
+    },      
+    "DigitalInStatus1": {
+        ADDRESS: 41042,
+        TYPE: "ushort",
+        UNITS: ""
+    },                   
+    "DigitalInStatus2": {
+        ADDRESS: 41043,
+        TYPE: "ushort",
+        UNITS: ""
+    },  
+    "DigitalInStatus3": {
+        ADDRESS: 41044,
+        TYPE: "ushort",
+        UNITS: ""
+    },  
+    "DigitalInStatus4": {
+        ADDRESS: 41045,
+        TYPE: "ushort",
+        UNITS: ""
+    },    
+    "DigitalOutStatus1": {
+        ADDRESS: 41035,
+        TYPE: "ushort",
+        UNITS: ""        
+    },  
+    "DigitalOutStatus2": {
+        ADDRESS: 41036,
+        TYPE: "ushort",
+        UNITS: ""        
+    }, 
+    "DigitalOutStatus3": {
+        ADDRESS: 41037,
+        TYPE: "ushort",
+        UNITS: ""        
+    }, 
+    "DigitalOutStatus4": {
+        ADDRESS: 41038,
+        TYPE: "ushort",
+        UNITS: ""        
+    }, 
+    "DigitalOutStatus5": {
+        ADDRESS: 41039,
+        TYPE: "ushort",
+        UNITS: ""        
+    }, 
+    "DigitalOutStatus6": {
+        ADDRESS: 41040,
+        TYPE: "ushort",
+        UNITS: ""        
+    }, 
+    "DigitalOutStatus7": {
+        ADDRESS: 41041,
+        TYPE: "ushort",
+        UNITS: ""        
+    },
+    "ActiveSchedule": {
+        ADDRESS: 41072,
+        TYPE: "ushort",
+        UNITS: ""      
+    }, 
+    "FloatMinutesToday": {
+        ADDRESS: 41148,
+        TYPE: "ushort",
+        UNITS: "Minutes"   
+    },   
+    "ACLoadVoltage": {
+        ADDRESS: 41234,
+        TYPE: "ushort",
+        UNITS: "V",
+        CONVERSION: "ac_v"
+    },        
+    "AcHz": {
+        ADDRESS: 41101,
+        TYPE: "ushort",
+        UNITS: "Hz",
+        CONVERSION: "ac_hz"   
+    }, 
+    "AnalogueDcVoltage1": {
+        ADDRESS: 41046,
+        TYPE: "ushort",
+        UNITS: "V",
+        CONVERSION: "dc_v"   
+    },
+    "AnalogueDcVoltage2": {
+        ADDRESS: 41047,
+        TYPE: "ushort",
+        UNITS: "V",
+        CONVERSION: "dc_v"   
+    },   
+    "ServiceRequiredReason0": { 
+        ADDRESS: 41533, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason1": { 
+        ADDRESS: 41534, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason2": { 
+        ADDRESS: 41535, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason3": { 
+        ADDRESS: 41536, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason4": { 
+        ADDRESS: 41537, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason5": { 
+        ADDRESS: 41538, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason6": { 
+        ADDRESS: 41539, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason7": { 
+        ADDRESS: 41540, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason8": { 
+        ADDRESS: 41541, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason9": { 
+        ADDRESS: 41542, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason10": { 
+        ADDRESS: 41543, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason11": { 
+        ADDRESS: 41544, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason12": { 
+        ADDRESS: 41545, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason13": { 
+        ADDRESS: 41546, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason14": { 
+        ADDRESS: 41547, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason15": { 
+        ADDRESS: 41548, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason16": { 
+        ADDRESS: 41549, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason17": { 
+        ADDRESS: 41550, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason18": { 
+        ADDRESS: 41551, 
+        TYPE: "ushort",
+        UNITS: ""
+    },
+    "ServiceRequiredReason19": { 
+        ADDRESS: 41552, 
+        TYPE: "ushort",
+        UNITS: ""
+    },  
+    "PowerModuleAirTemperature": { 
+        DESCRIPTION: "Power Module (Inlet) Air Temperature",
+        ADDRESS: 41022, 
+        TYPE: "ushort",
+        UNITS: "°C",
+        CONVERSION: "temperature",
+    },
+    "TransformerTemperature": { 
+        DESCRIPTION: "Transformer Temperature",
+        ADDRESS: 41021, 
+        TYPE: "ushort",
+        UNITS: "°C",
+        CONVERSION: "temperature",
+    },
+    "InternalTemperature": { 
+        DESCRIPTION: "Control Board (Internal) Temperature",
+        ADDRESS: 41019, 
+        TYPE: "ushort",
+        UNITS: "°C",
+        CONVERSION: "temperature",
+    },  
+    "HalfBridge1HeatsinkTemperature": { 
+        DESCRIPTION: "Half Bridge 1 Heatsink Temperature",
+        ADDRESS: 41015, 
+        TYPE: "ushort",
+        UNITS: "°C",
+        CONVERSION: "temperature",
+    },  
+    "HalfBridge2HeatsinkTemperature": { 
+        DESCRIPTION: "Half Bridge 2 Heatsink Temperature",
+        ADDRESS: 41016, 
+        TYPE: "ushort",
+        UNITS: "°C",
+        CONVERSION: "temperature",
+    },          
+    "FanSpeed": { 
+        DESCRIPTION: "Fan Speed",
+        ADDRESS: 41026, 
+        TYPE: "ushort",
+        UNITS: "%",
+        CONVERSION: "percent",
+    },      
 }
 
 TYPES = {
