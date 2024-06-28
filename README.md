@@ -47,11 +47,13 @@ positional arguments:
     proxy               expose SP PRO over TCP proxy
     scan                scan known addresses
     stat                show known stats
+    http-ha             additional functionality
 
 options:
   -h, --help            show this help message and exit
   --log {info,debug,warning,error,critical}
                         log level
+  --logfile {name of log file, if arg not used file logging does not occur}                        
 ```
 
 # Commands
@@ -155,6 +157,154 @@ $ ./selpi stat
   }
 ]
 ```
+
+## http-ha
+```
+$ ./selpi http-ha
+Starting server on port 8001
+```
+
+Once running includes the standard select.live emulation plus new call that includes additional variables:
+* Service Required Codes
+* AC Load Voltage and Hz
+* All the digital inputs and outputs
+* Charger Mode
+* Inverter Mode
+* AC Output Status
+* AC Source Status
+* Generator Start and Run Reason Codes
+* Battery and Sp Pro Internal Temperature
+* Fan Speed
+* Minutes that Batteries have been at float today
+* Hybrid Active Schedule (Used for grid connnected systems) 
+
+Summary of Http Calls Available:
+* GET: ip_address_selpi_device:8001/havalues
+* GET: ip_address_selpi_device:8001/selectlive
+* GET: ip_address_selpi_device:8001/state
+* POST: ip_address_selpi_device:8001/http/start
+* POST: ip_address_selpi_device:8001/http/stop
+
+
+### HA VALUES: 
+
+GET: ip_address_selpi_device:8001/havalues
+
+Returns following json payload.
+Note: Inclusion of Result object that includes Success flag and a message
+
+```json
+{
+  "device":{
+    "name":"Selectronic SP-PRO"
+  },
+  "item_count":47,
+  "items":{
+    "battery_in_wh_today":15.2578125,
+    "battery_in_wh_total":505.96875,
+    "battery_out_wh_today":6.029296875,
+    "battery_out_wh_total":503.015625,
+    "battery_soc":98.61328125,
+    "battery_w":-71.77734375,
+    "gen_status":10,
+    "grid_in_wh_today":0.11389306640625,
+    "grid_in_wh_total":66.85522998046875,
+    "grid_out_wh_today":0.6833583984375,
+    "grid_out_wh_total":331.54271630859375,
+    "grid_w":1869.7445068359375,
+    "load_w":384.38909912109375,
+    "load_wh_today":5.4668671875,
+    "load_wh_total":754.6554580078125,
+    "shunt_w":0.0,
+    "solar_wh_today":12.0726650390625,
+    "solar_wh_total":1171.5040810546875,
+    "solarinverter_w":2424.9732055664062,
+    "ChargeMode":0,
+    "GeneratorStartReason":0,
+    "GeneratorRunningReason":0,
+    "AcSourceStatus":7,
+    "AcOutStatus":3,
+    "DigitalInStatus1":0,
+    "DigitalInStatus2":0,
+    "DigitalInStatus3":0,
+    "DigitalInStatus4":1,
+    "DigitalOutStatus1":0,
+    "DigitalOutStatus2":0,
+    "DigitalOutStatus3":0,
+    "RelayOutStatus1":0,
+    "RelayOutStatus2":0,
+    "RelayOutStatus3":0,
+    "RelayOutStatus4":1,
+    "AnalogueDcVoltage1":0.330047607421875,
+    "AnalogueDcVoltage2":0.323638916015625,
+    "BatteryVolts":56.396484375,
+    "BatteryTemperature":20.71929931640625,
+    "InternalTemperature":34.9688720703125,
+    "FanSpeed":26.0,
+    "ActiveSchedule":8,
+    "FloatMinutesToday":0,
+    "ACLoadVoltage":246.49658203125,
+    "AcHz":50.03,
+    "ServiceRequiredReasonCodesAsCsv":"",
+    "timestamp":1719558422
+  },
+  "now":1719558422,
+  "Result":{
+    "Success":true,
+    "Message":""
+  }
+}
+```
+
+### SELECT LIVE:
+Same as select live emulation
+
+### STATE
+GET: ip_address_selpi_device:8001/state
+Returns current http server state
+
+```json
+{
+  "AllowSpProAccess":true,
+  "Result":{
+    "Success":true,
+    "Message":""
+  }
+}
+```
+
+### HTTP STOP
+POST: ip_address_selpi_device:8001/http/stop
+
+Stops access to SP Pro via the web service.
+Used to pause access to Sp Pro if you have another process calling at regular interval that you want to prevent access Sp Pro.
+
+```json
+{
+  "AllowSpProAccess":false,
+  "Result":{
+    "Success":true,
+    "Message":""
+  }
+}
+```
+
+### HTTP START
+POST: ip_address_selpi_device:8001/http/start
+
+Allows access to Sp Pro via web service
+
+```json
+{
+  "AllowSpProAccess":true,
+  "Result":{
+    "Success":true,
+    "Message":""
+  }
+}
+```
+
+
 
 # Acknowledgements
 
