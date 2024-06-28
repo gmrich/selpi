@@ -14,6 +14,7 @@ MAGIC_AC_W_DIVISOR        = MAGIC * 800.0
 MAGIC_AC_W_SIGNED_DIVISOR = MAGIC * 100.0
 MAGIC_DC_W_DIVISOR        = MAGIC * 100.0
 MAGIC_DC_V_DIVISOR        = MAGIC * 10.0
+MAGIC_X10                 = MAGIC * 10.0
 MAGIC_WH_MULTIPLIER       = 24.0
 MAGIC_WH_DIVISOR          = MAGIC * 100.0
 MAGIC_TEMPERATURE_DIVISOR = MAGIC
@@ -61,3 +62,12 @@ def _convert_shunt_name(raw, scales):
     if raw in SHUNT_NAMES:
         return SHUNT_NAMES[raw]
     return 'Error'
+	
+def _convert_ac_v(raw, scales):
+    return raw * scales['CommonScaleForAcVolts'] / MAGIC_X10
+	
+def _convert_ac_hz(raw, scales):
+    return raw / 100
+	
+def _convert_dc_cu(raw, scales):
+    return raw * scales['CommonScaleForDcCurrent'] / MAGIC_X10
