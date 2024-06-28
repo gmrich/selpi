@@ -71,6 +71,7 @@ class Statistics():
             "ACSolarWhTodayAcc": variable.create("ACSolarWhTodayAcc"),
             "Shunt1WhTodayAcc": variable.create("Shunt1WhTodayAcc"),
             "ACGeneratorPower": variable.create("ACGeneratorPower"),
+            "GeneratorStatus": variable.create("GeneratorStatus"),
         }
         self.__update(list(vars.values()))
         timestamp = int(time.time())
@@ -83,7 +84,7 @@ class Statistics():
             "battery_w": vars["DCBatteryPower"].get_value(self.scales),
             #"fault_code": 0,
             #"fault_ts": 0,
-            #"gen_status": 0,
+            "gen_status": vars["GeneratorStatus"].get_value(self.scales),
             "grid_in_wh_today": vars["ACInputWhTodayAcc"].get_value(self.scales) / 1000,
             "grid_in_wh_total": vars["ACInputWhTotalAcc"].get_value(self.scales) / 1000,
             "grid_out_wh_today": vars["ACExportWhTodayAcc"].get_value(self.scales) / 1000, # unverified guess
